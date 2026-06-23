@@ -1,0 +1,95 @@
+DynCombo — END-USER LICENSE AGREEMENT (EULA)
+============================================
+
+DynCombo is a commercial, proprietary Odoo module offered for sale by Franklin
+Blanco. It is sold as a paid product (through the Odoo Apps store or directly
+from the Licensor); a valid license must be purchased to install or use it.
+
+IMPORTANT — READ CAREFULLY. This End-User License Agreement ("Agreement") is a
+legal agreement between you (the "Licensee" — the individual or company that
+purchases, installs, or uses the Software) and Franklin Blanco ("Licensor"). By
+installing, copying, or using the DynCombo Odoo module and its associated files
+(the "Software"), you agree to be bound by this Agreement. If you do not agree,
+do not install or use the Software.
+
+This Agreement supplements the Odoo Proprietary License v1.0 (the "License";
+see the LICENSE file). The License governs how the Software is licensed; this
+Agreement adds the terms of use between Licensor and Licensee.
+
+1. LICENSE GRANT
+   The Software is a paid, commercial product. Subject to your purchase of a
+   valid license for the Software (through the Odoo Apps store or directly from
+   the Licensor), or to a license otherwise granted in writing by the Licensor,
+   and subject to this Agreement, Licensor grants Licensee a non-exclusive,
+   non-transferable, revocable right to install and use the Software in
+   Licensee's own Odoo database(s) for Licensee's own internal business
+   purposes.
+
+2. RESTRICTIONS — NO REDISTRIBUTION
+   Licensee shall NOT, and shall not permit any third party to:
+   (a) publish, distribute, resell, rent, lease, lend, sublicense, or otherwise
+       make the Software available to any third party — in whole or in part,
+       original or modified, in source or any other form;
+   (b) offer the Software itself as a product or service to third parties (using
+       it to run Licensee's own business is fine);
+   (c) remove, alter, or obscure any copyright, license, or proprietary notice.
+
+   A hosting provider or contractor may install and operate the Software on
+   Licensee's behalf, SOLELY for Licensee's own use. They may not copy, retain,
+   redistribute, resell, or reuse the Software for themselves or any other
+   party. Licensee is responsible for ensuring its hosting provider complies
+   with this Agreement.
+
+3. SOURCE CODE & MODIFICATIONS
+   The Software is delivered in source form, as is normal for Odoo modules.
+   Licensee may modify it for Licensee's own internal use. Any modified copies
+   remain subject to this Agreement and the License and may not be distributed.
+
+4. OWNERSHIP
+   The Software is licensed, not sold. Licensor retains all right, title, and
+   interest in and to the Software, including all intellectual-property rights.
+   Each license is sold per customer.
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING WITHOUT LIMITATION THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+6. LIMITATION OF LIABILITY
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL LICENSOR BE LIABLE
+   FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, OR FOR LOST
+   PROFITS, DATA, OR BUSINESS, ARISING OUT OF OR RELATED TO THE SOFTWARE.
+   LICENSOR'S TOTAL LIABILITY SHALL NOT EXCEED THE FEE PAID FOR THE SOFTWARE.
+
+7. TERM & TERMINATION
+   This Agreement is effective until terminated. It terminates automatically if
+   Licensee breaches any term. On termination, Licensee must stop using and
+   delete all copies of the Software.
+
+8. ENTIRE AGREEMENT
+   This Agreement, together with the License, is the entire agreement between
+   the parties regarding the Software.
+
+Author / Licensor:  Franklin Blanco
+Contact:            me@franklinblanco.dev
+Copyright (c) 2026 Franklin Blanco. All rights reserved.
+
+
+-------------------------------------------------------------------------------
+RESUMEN EN ESPAÑOL (traducción de cortesía; el texto en inglés prevalece)
+-------------------------------------------------------------------------------
+DynCombo es un producto comercial de pago: un módulo de Odoo que se vende (en la
+tienda de Odoo Apps o directamente con el autor); se requiere comprar una
+licencia válida para instalarlo o usarlo. Se concede el derecho de instalarlo y
+usarlo en las bases de datos Odoo del propio cliente, para su uso interno. Queda
+PROHIBIDO publicar, distribuir, revender, sublicenciar o poner el software
+(total o parcialmente, original o modificado) a disposición de terceros. Un
+proveedor de hosting puede instalarlo y operarlo en nombre del cliente, solo
+para el uso del cliente, y no puede copiarlo ni redistribuirlo. El software se
+entrega "TAL CUAL", sin garantías. Cada licencia se vende por cliente.
+Autor/licenciante: Franklin Blanco (me@franklinblanco.dev).
+
+
+-------------------------------------------------------------------------------
+NOTE: This EULA is a practical template, not legal advice. Before selling the
+Software commercially, have it reviewed by a lawyer in your jurisdiction.

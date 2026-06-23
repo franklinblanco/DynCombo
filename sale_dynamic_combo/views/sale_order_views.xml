@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_dynamic_combo" model="ir.ui.view">
+        <field name="name">sale.order.form.dynamic.combo</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Colour each combo (header + its items) so combos are easy to
+                 tell apart; combo headers are also bold. Membership is the
+                 invisible combo_group, set by dragging lines in/out. -->
+            <xpath expr="//field[@name='order_line']/list" position="attributes">
+                <attribute name="decoration-bf">combo_report_role == 'parent'</attribute>
+                <attribute name="decoration-info">combo_color in [1, 7]</attribute>
+                <attribute name="decoration-success">combo_color in [2, 8]</attribute>
+                <attribute name="decoration-warning">combo_color in [3, 9]</attribute>
+                <attribute name="decoration-danger">combo_color in [4, 10]</attribute>
+                <attribute name="decoration-primary">combo_color in [5, 11]</attribute>
+                <attribute name="decoration-muted">combo_color == 6</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list" position="inside">
+                <field name="combo_report_role" column_invisible="1"/>
+                <field name="combo_price_locked" column_invisible="1"/>
+                <field name="combo_color" column_invisible="1"/>
+                <!-- The invisible grouping key the drag widget sets/clears, plus
+                     the combo flag it needs to find combo headers. -->
+                <field name="combo_group" column_invisible="1"/>
+                <field name="is_dynamic_combo" column_invisible="1"/>
+                <field name="dynamic_combo_pricing" column_invisible="1"/>
+                <field name="combo_unit_qty" column_invisible="1"/>
+                <field name="combo_display_subtotal"
+                       optional="hide"
+                       readonly="1"/>
+            </xpath>
+            <!-- Document-wide: show the full combo (components) on print, or not. -->
+            <xpath expr="//field[@name='order_line']" position="before">
+                <group>
+                    <group>
+                        <field name="combo_print_full"/>
+                    </group>
+                </group>
+            </xpath>
+            <!-- Show the kit's total on the kit header's Amount cell (display
+                 only; the underlying subtotal stays 0 so totals don't double).
+                 The Amount column is the first price_subtotal in the list. -->
+            <xpath expr="(//field[@name='order_line']/list/field[@name='price_subtotal'])[1]"
+                   position="attributes">
+                <attribute name="widget">combo_amount</attribute>
+            </xpath>
+            <!-- Rescale a kit's components live when its quantity changes. -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']"
+                   position="attributes">
+                <attribute name="widget">combo_qty</attribute>
+            </xpath>
+            <!-- Lock the unit price on lines whose price we force to zero
+                 (combo header in sum pricing, components in fixed pricing). -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']"
+                   position="attributes">
+                <attribute name="readonly">qty_invoiced &gt; 0 or combo_price_locked</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

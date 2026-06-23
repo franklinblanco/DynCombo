@@ -1,0 +1,405 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_dynamic_combo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-21 23:46+0000\n"
+"PO-Revision-Date: 2026-06-21 23:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: sale_dynamic_combo
+#: model:product.template,name:sale_dynamic_combo.product_combo_stand_product_template
+msgid "Adjustable Laptop Stand"
+msgstr "Soporte Ajustable para Laptop"
+
+#. module: sale_dynamic_combo
+#. odoo-javascript
+#: code:addons/sale_dynamic_combo/static/src/js/combo_drag.js:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_parent_line_id
+#: model:ir.model.fields.selection,name:sale_dynamic_combo.selection__sale_order_line__combo_report_role__parent
+msgid "Combo"
+msgstr "Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_color
+msgid "Combo Color"
+msgstr "Color del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_component_ids
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_component_ids
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_component_line_ids
+msgid "Combo Components"
+msgstr "Componentes del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_group
+msgid "Combo Group"
+msgstr "Grupo del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_hide_price_in_report
+msgid "Combo Hide Price In Report"
+msgstr "Ocultar Precio del Combo en el Reporte"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_bom_id
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_bom_id
+msgid "Combo Kit BoM"
+msgstr "Lista de Materiales del Kit"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_parent_show_total
+msgid "Combo Parent Show Total"
+msgstr "Combo Padre Mostrar Total"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_price_locked
+msgid "Combo Price Locked"
+msgstr "Precio del Combo Bloqueado"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_pricing
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_pricing
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__dynamic_combo_pricing
+msgid "Combo Pricing"
+msgstr "Precio del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__product_tmpl_id
+msgid "Combo Product"
+msgstr "Producto Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_report_role
+msgid "Combo Report Role"
+msgstr "Rol del Combo en el Reporte"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_display_subtotal
+msgid "Combo Total"
+msgstr "Total del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__component_product_id
+#: model:ir.model.fields.selection,name:sale_dynamic_combo.selection__sale_order_line__combo_report_role__component
+msgid "Component"
+msgstr "Componente"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__component_cost_subtotal
+msgid "Cost Subtotal"
+msgstr "Subtotal de Costo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: sale_dynamic_combo
+#. odoo-javascript
+#: code:addons/sale_dynamic_combo/static/src/js/combo_drag.js:0
+msgid "Delete kit"
+msgstr "Eliminar kit"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__display_name
+msgid "Display Name"
+msgstr "Nombre Mostrado"
+
+#. module: sale_dynamic_combo
+#: model_terms:ir.ui.view,arch_db:sale_dynamic_combo.product_template_form_view_dynamic_combo
+msgid "DynCombo"
+msgstr "DynCombo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__is_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__is_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__is_dynamic_combo
+msgid "Dynamic Combo"
+msgstr "Combo Dinámico"
+
+#. module: sale_dynamic_combo
+#: model:ir.model,name:sale_dynamic_combo.model_sale_combo_component
+msgid "Dynamic Combo Component"
+msgstr "Componente de Combo Dinámico"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields.selection,name:sale_dynamic_combo.selection__product_template__dynamic_combo_pricing__fixed
+msgid "Fixed combo price"
+msgstr "Precio fijo del combo"
+
+#. module: sale_dynamic_combo
+#: model:product.template,name:sale_dynamic_combo.product_combo_home_office
+msgid "Home Office Starter Kit"
+msgstr "Kit Inicial de Oficina en Casa"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_dynamic_combo
+#. odoo-javascript
+#: code:addons/sale_dynamic_combo/static/src/js/combo_drag.js:0
+msgid "Kit and its components"
+msgstr "El kit y sus componentes"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__write_date
+msgid "Last Updated on"
+msgstr "Última Actualización el"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_cost
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_cost
+msgid "Live Combo Cost"
+msgstr "Costo del Combo (en vivo)"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_price
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_price
+msgid "Live Combo Price"
+msgstr "Precio del Combo (en vivo)"
+
+#. module: sale_dynamic_combo
+#: model_terms:ir.ui.view,arch_db:sale_dynamic_combo.product_template_form_view_dynamic_combo
+msgid "Live totals (always current)"
+msgstr "Totales en vivo (siempre actuales)"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields.selection,name:sale_dynamic_combo.selection__sale_order_line__combo_report_role__normal
+msgid "Normal"
+msgstr "Normal"
+
+#. module: sale_dynamic_combo
+#. odoo-javascript
+#: code:addons/sale_dynamic_combo/static/src/js/combo_drag.js:0
+msgid "Only the kit"
+msgstr "Solo el kit"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__combo_color
+msgid ""
+"Per-combo colour index (0 = not in a combo), so combos are easy to tell "
+"apart in the order lines."
+msgstr ""
+"Índice de color por combo (0 = no está en un combo), para distinguir los "
+"combos fácilmente en las líneas del pedido."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__dynamic_combo_bom_id
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__dynamic_combo_bom_id
+msgid ""
+"Phantom Bill of Materials generated from the combo components. Drives the "
+"explosion into components on purchase and in inventory."
+msgstr ""
+"Lista de Materiales tipo Kit (phantom) generada a partir de los componentes "
+"del combo. Realiza la explosión en componentes en compras y en inventario."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__component_price_subtotal
+msgid "Price Subtotal"
+msgstr "Subtotal de Precio"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__component_price
+msgid "Price at which the product is sold to customers."
+msgstr "Precio al que se vende el producto a los clientes."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order__combo_print_full
+msgid ""
+"Print the full breakdown of every combo (its components). Untick to print "
+"just the combo line."
+msgstr ""
+"Imprime el desglose completo de cada combo (sus componentes). Desmarque para "
+"imprimir solo la línea del combo."
+
+#. module: sale_dynamic_combo
+#: model:ir.model,name:sale_dynamic_combo.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_dynamic_combo
+#: model:ir.model,name:sale_dynamic_combo.model_product_product
+msgid "Product Variant"
+msgstr "Variante de Producto"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_unit_qty
+msgid "Qty per Combo"
+msgstr "Cant. por Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: sale_dynamic_combo
+#: model:ir.model,name:sale_dynamic_combo.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de Venta"
+
+#. module: sale_dynamic_combo
+#: model:ir.model,name:sale_dynamic_combo.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de Pedido de Venta"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order__combo_print_full
+msgid "Show full combo on print"
+msgstr "Mostrar combo completo al imprimir"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields.selection,name:sale_dynamic_combo.selection__product_template__dynamic_combo_pricing__sum
+msgid "Sum of components"
+msgstr "Suma de los componentes"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__dynamic_combo_pricing
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__dynamic_combo_pricing
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__dynamic_combo_pricing
+msgid ""
+"Sum of components: the combo price is the live total of its components and updates as you edit them on the quotation.\n"
+"Fixed combo price: the combo is sold at this product's own sales price; components are informational only."
+msgstr ""
+"Suma de los componentes: el precio del combo es el total en vivo de sus componentes y se actualiza al editarlos en la cotización.\n"
+"Precio fijo del combo: el combo se vende al precio de venta propio de este producto; los componentes son solo informativos."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__dynamic_combo_cost
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__dynamic_combo_cost
+msgid ""
+"Sum of the current costs (standard_price) of the components. Follows "
+"component cost changes automatically — e.g. when import freight pushes a "
+"component cost up, the kit cost moves with it."
+msgstr ""
+"Suma de los costos actuales (standard_price) de los componentes. Sigue "
+"automáticamente los cambios de costo de los componentes — p. ej. cuando el "
+"flete de importación sube el costo de un componente, el costo del kit se "
+"mueve con él."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__dynamic_combo_price
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__dynamic_combo_price
+msgid ""
+"Sum of the current sales prices of the components. Shown for reference; in "
+"'Sum of components' pricing this is what the combo sells for on a quotation."
+msgstr ""
+"Suma de los precios de venta actuales de los componentes. Se muestra como "
+"referencia; en el modo 'Suma de los componentes' es lo que el combo cuesta "
+"en una cotización."
+
+#. module: sale_dynamic_combo
+#: model_terms:ir.ui.view,arch_db:sale_dynamic_combo.report_saleorder_document_dynamic_combo
+msgid "Tax 15%"
+msgstr "Impuesto 15%"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__combo_display_subtotal
+msgid ""
+"The amount shown for the combo header line: the sum of its components (sum "
+"pricing) or its own price (fixed pricing)."
+msgstr ""
+"El importe mostrado en la línea del combo: la suma de sus componentes "
+"(precio por suma) o su propio precio (precio fijo)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__combo_parent_line_id
+msgid "The combo this line is a component of."
+msgstr "El combo del cual esta línea es componente."
+
+#. module: sale_dynamic_combo
+#. odoo-javascript
+#: code:addons/sale_dynamic_combo/static/src/js/combo_drag.js:0
+msgid ""
+"This is a kit. Do you want to delete the kit together with its components, "
+"or only the kit (keeping its components as separate lines)?"
+msgstr ""
+"Esto es un kit. ¿Desea eliminar el kit junto con sus componentes, o solo el "
+"kit (manteniendo sus componentes como líneas separadas)?"
+
+#. module: sale_dynamic_combo
+#: model_terms:ir.ui.view,arch_db:sale_dynamic_combo.product_template_form_view_dynamic_combo
+msgid "Total cost"
+msgstr "Costo total"
+
+#. module: sale_dynamic_combo
+#: model_terms:ir.ui.view,arch_db:sale_dynamic_combo.product_template_form_view_dynamic_combo
+msgid "Total price"
+msgstr "Precio total"
+
+#. module: sale_dynamic_combo
+#: model:product.template,name:sale_dynamic_combo.product_combo_hub_product_template
+msgid "USB-C Docking Hub"
+msgstr "Hub de Conexión USB-C"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__component_cost
+msgid "Unit Cost"
+msgstr "Costo Unitario"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__component_price
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__component_cost
+msgid ""
+"Value of the product (automatically computed in AVCO).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"Valor del producto (calculado automáticamente en AVCO).\n"
+"        Se usa para valorar el producto cuando no se conoce el costo de compra (p. ej. ajuste de inventario).\n"
+"        Se usa para calcular márgenes en los pedidos de venta."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__is_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__is_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__is_dynamic_combo
+msgid ""
+"When enabled, adding this product to a quotation expands it into its "
+"component products. The composition can be edited per quote and printed "
+"collapsed (combo only) or in full detail. On purchase and in inventory the "
+"kit is exploded into its components."
+msgstr ""
+"Cuando está activado, agregar este producto a una cotización lo expande en "
+"sus productos componentes. La composición se puede editar por cotización e "
+"imprimir contraída (solo el combo) o en detalle completo. En compras y en "
+"inventario el kit se explota en sus componentes."
+
+#. module: sale_dynamic_combo
+#: model:product.template,name:sale_dynamic_combo.product_combo_mouse_product_template
+msgid "Wireless Mouse"
+msgstr "Mouse Inalámbrico"

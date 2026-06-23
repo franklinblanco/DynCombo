@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_dynamic_combo" model="ir.ui.view">
+        <field name="name">product.template.form.dynamic.combo</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="DynCombo" name="dynamic_combo">
+                    <group>
+                        <field name="is_dynamic_combo"/>
+                    </group>
+                    <group invisible="not is_dynamic_combo">
+                        <group>
+                            <field name="dynamic_combo_pricing" widget="radio"/>
+                        </group>
+                        <group string="Live totals (always current)">
+                            <field name="dynamic_combo_price"/>
+                            <field name="dynamic_combo_cost"/>
+                            <field name="dynamic_combo_bom_id"/>
+                        </group>
+                    </group>
+                    <field name="dynamic_combo_component_ids"
+                           invisible="not is_dynamic_combo">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="component_product_id"/>
+                            <field name="quantity"/>
+                            <field name="component_price" readonly="1"/>
+                            <field name="component_cost" readonly="1"/>
+                            <field name="component_price_subtotal" readonly="1"
+                                   sum="Total price"/>
+                            <field name="component_cost_subtotal" readonly="1"
+                                   sum="Total cost"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

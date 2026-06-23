@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_dynamic_combo"
+              inherit_id="sale.report_saleorder_document">
+
+        <!-- Indent component rows under their combo header. -->
+        <xpath expr="//td[@name='td_name']" position="attributes">
+            <attribute name="t-attf-class"
+                >{{ 'ps-4' if line.combo_report_role == 'component' else '' }}</attribute>
+        </xpath>
+
+        <!-- Unit price: blank on a combo header and on hidden components. -->
+        <xpath expr="//td[@name='td_priceunit']" position="replace">
+            <td name="td_priceunit" class="text-end text-nowrap">
+                <t t-if="line.combo_report_role != 'parent' and not line.combo_hide_price_in_report">
+                    <span t-if="line.discount &lt; 0"
+                          t-out="(1 - line.discount / 100.0) * line.price_unit"
+                          t-options='{"widget": "float", "decimal_precision": "Product Price"}'/>
+                    <span t-else="" t-field="line.price_unit"/>
+                </t>
+            </td>
+        </xpath>
+
+        <!-- Discount: keep the cell (column alignment) but blank it for combo
+             header & hidden component rows. -->
+        <xpath expr="//td[@name='td_priceunit']/following-sibling::td[1]" position="replace">
+            <td t-if="display_discount" class="text-end">
+                <span t-if="line.discount > 0 and line.combo_report_role != 'parent' and not line.combo_hide_price_in_report"
+                      t-field="line.discount">-</span>
+            </td>
+        </xpath>
+
+        <!-- Taxes: blank on a combo header and on hidden components. -->
+        <xpath expr="//td[@name='td_taxes']" position="replace">
+            <td name="td_taxes" t-attf-class="text-end {{ 'text-nowrap' if len(taxes) &lt; 10 else '' }}">
+                <span t-if="line.combo_report_role != 'parent' and not line.combo_hide_price_in_report"
+                      t-out="taxes">Tax 15%</span>
+            </td>
+        </xpath>
+
+        <!-- Subtotal: combo header shows the combo total (when not itemizing);
+             hidden components show nothing; everything else is unchanged. -->
+        <xpath expr="//td[@name='td_subtotal']" position="replace">
+            <td t-if="not line.is_downpayment" name="td_subtotal" class="text-end o_price_total">
+                <t t-if="line.combo_report_role == 'parent'">
+                    <span t-if="line.combo_parent_show_total"
+                          t-out="line.combo_display_subtotal"
+                          t-options='{"widget": "monetary", "display_currency": doc.currency_id}'>27.00</span>
+                </t>
+                <t t-elif="line.combo_hide_price_in_report"/>
+                <t t-else="">
+                    <span t-if="doc.company_price_include == 'tax_included'" t-field="line.price_total">27.00</span>
+                    <span t-else="" t-field="line.price_subtotal">27.00</span>
+                </t>
+            </td>
+        </xpath>
+    </template>
+</odoo>
