@@ -4,13 +4,20 @@ Goal: turn DynCombo from a $30 utility into a $49–59 "premium dynamic combo fo
 Sales" without leaving the Sales app. Path B (POS / Website / Purchase breadth,
 toward $65–69) is a **separate later milestone**.
 
-Sequencing is by ROI and risk. Task 0 protects the price (no money-wrong PDFs);
-Tasks 1–2 are quick visible value; Task 3 is cheap parity; Task 4 is the big
-differentiator that carries the price.
+**Agreed execution order (2026-06-23):** push → perfect the test suite → manual
+browser tests → **Task 1 combo discount** → Tasks 2–4 → when v18 is *feature
+complete*, port to **17.0 then 16.0** as separate branches in this publishing
+repo (the section-subtotal fix lives in the version-specific sale report
+template, so each port needs its own test pass). **Status: Tasks 0 & 1 DONE** —
+14 tests green, combo discount verified in-browser; Tasks 2–4 next.
+
+Sequencing rationale: Task 0 protects the price (no money-wrong PDFs); Tasks 1–2
+are quick visible value; Task 3 is cheap parity; Task 4 is the big differentiator
+that carries the price.
 
 ---
 
-## Task 0 — Test suite  ← STARTING NOW (price floor, not a feature)
+## Task 0 — Test suite  ← DONE (14 tests, green) (price floor, not a feature)
 **Why:** we found 5 real bugs by hand, incl. a wrong PDF total. At $49+ a wrong
 total = refunds + bad reviews. Lock the behaviour down so Odoo point-releases and
 future features can't silently break totals.
@@ -28,7 +35,15 @@ future features can't silently break totals.
 **Effort:** ~2 days. **Acceptance:** `--test-enable` green; every fixed bug has a
 failing-before/passing-after test.
 
-## Task 1 — Combo-level discount
+## Task 1 — Combo-level discount  ← DONE (v18.0.5.9.0)
+Shipped: a discount on the combo header propagates to every component in sum
+pricing (combo total + section subtotals drop together) and discounts the combo
+price in fixed pricing; it also prints on a collapsed combo line. Reuses the
+standard line `discount` field (needs the Sales *Discounts* setting). Tests:
+`test_combo_discount_sum_spreads_to_components`, `test_combo_discount_fixed_on_header`.
+Follow-ups: live JS recompute on the header (today it applies on save), and new
+dragged-in components inheriting the combo discount.
+
 **Why:** real quoting need; no dynamic-combo competitor does it cleanly.
 **Approach:** add `combo_discount` (%) on the combo header line. In **sum**
 pricing, distribute it onto the component lines' `discount` (so totals + the

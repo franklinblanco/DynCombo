@@ -111,3 +111,24 @@ class TestComboTotals(TransactionCase):
                              "section subtotal must reconcile with the grand "
                              "total (combo_print_full=%s)" % full)
             self.assertEqual(order.amount_untaxed, 620.0)
+
+    # Path A — combo-level discount -----------------------------------------
+    def test_combo_discount_sum_spreads_to_components(self):
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id)
+        header = self._header(order)
+        header.discount = 10.0
+        self.assertTrue(all(c.discount == 10.0 for c in self._components(order)),
+                        "a discount on the combo header applies to every component")
+        self.assertAlmostEqual(header.combo_display_subtotal, 117.0)  # 130 * 0.9
+        self.assertAlmostEqual(order.amount_untaxed, 117.0)
+
+    def test_combo_discount_fixed_on_header(self):
+        order = self._order()
+        self._add(order, self.fixed_combo.product_variant_id)
+        header = self._header(order)
+        header.discount = 25.0
+        self.assertAlmostEqual(header.price_subtotal, 150.0)  # 200 * 0.75
+        self.assertAlmostEqual(order.amount_untaxed, 150.0)
+        # components stay zero-priced, so their discount can't affect the total
+        self.assertEqual(sum(self._components(order).mapped('price_subtotal')), 0.0)

@@ -240,6 +240,19 @@ class SaleOrderLine(models.Model):
                     and line.product_id.dynamic_combo_pricing == 'sum'
                     and line.price_unit):
                 line.price_unit = 0.0
+        # A combo header created already carrying a discount (import / API)
+        # spreads it to its components, same as write() does on edit.
+        for line in lines:
+            if (line.is_dynamic_combo and not line.combo_parent_line_id
+                    and line.discount
+                    and line.product_id.dynamic_combo_pricing == 'sum'):
+                components = line.order_id.order_line.filtered(
+                    lambda l, g=line.combo_group: g and l.combo_group == g
+                    and not l.is_dynamic_combo)
+                for child in components:
+                    if child.discount != line.discount:
+                        child.with_context(
+                            combo_no_propagate=True).discount = line.discount
         return lines
 
     def write(self, vals):
@@ -262,6 +275,20 @@ class SaleOrderLine(models.Model):
                     parent_qty = line.combo_parent_line_id.product_uom_qty or 1.0
                     line.with_context(combo_no_propagate=True).combo_unit_qty = (
                         line.product_uom_qty / parent_qty)
+        # Propagate a combo header's discount across its components, so one
+        # discount on the combo header discounts the whole combo. Sum pricing
+        # only — fixed pricing carries the money (and the discount) on the
+        # header itself, and the components are zero-priced.
+        if 'discount' in vals:
+            for line in self:
+                if (line.product_id.is_dynamic_combo
+                        and not line.combo_parent_line_id
+                        and line.product_id.dynamic_combo_pricing == 'sum'):
+                    for child in line.combo_component_line_ids:
+                        if child.discount != line.discount:
+                            child.with_context(
+                                combo_no_propagate=True
+                            ).write({'discount': line.discount})
         return res
 
     def _expand_combo_components(self):

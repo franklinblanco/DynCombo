@@ -32,6 +32,12 @@ cost moves — e.g. import freight rises — the kit follows automatically. This
 the gap in native Odoo kits, where the kit price/cost is frozen at creation and
 must be re-edited by hand.
 
+**Combo discount.** Put a discount on the combo header line and it applies to the
+**whole combo**: in *sum* pricing it spreads to every component (so the combo
+total and any section subtotal drop together); in *fixed* pricing it discounts
+the combo price directly. The discount also prints on a collapsed combo line.
+Requires the standard *Discounts* setting (Sales ▸ Settings).
+
 ### Purchase & inventory (components, not the kit)
 
 Marking a product as a dynamic combo generates and maintains a **phantom Bill of
@@ -94,8 +100,7 @@ then the document field, then each line's own setting).
 ## Licensing
 
 DynCombo is a **commercial, paid product**: a proprietary module sold via the
-Odoo Apps store (and/or directly). Introductory launch price **10.00 USD** in
-the manifest (planned to rise to $15 after launch).
+Odoo Apps store (and/or directly). Price **70.00 USD** in the manifest.
 Built clean (no OCA code) and marked **OPL-1** so it can be sold. Target the
 customer's exact Odoo version before distributing — prototyped on 18.0.
 
