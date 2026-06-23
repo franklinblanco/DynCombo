@@ -24,15 +24,17 @@ components, not as a single opaque product.
 Three print modes per quotation line: combo only, full detail without component
 prices, or full detail with component prices.
 
-Available in English and Spanish.
+Fully translated in English, Spanish, Italian, Portuguese and French. Built for
+Odoo 18.0, with 17.0 and 16.0 on the way — the goal is to support every active
+Odoo version.
 """,
     'author': "Franklin Blanco",
     'support': "me@franklinblanco.dev",
     'website': "https://apps.odoo.com/apps/modules/18.0/sale_dynamic_combo",
     'category': 'Sales/Sales',
-    'version': '18.0.5.7.0',
+    'version': '18.0.5.8.0',
     'license': 'OPL-1',
-    'price': 30.00,
+    'price': 70.00,
     'currency': 'USD',
     'depends': ['sale_management', 'mrp', 'sale_mrp', 'purchase_mrp'],
     'data': [

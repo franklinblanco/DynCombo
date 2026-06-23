@@ -89,6 +89,11 @@ msgid "Combo Report Role"
 msgstr "Rol del Combo en el Reporte"
 
 #. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_report_subtotal
+msgid "Combo Report Subtotal"
+msgstr "Subtotal del Combo en el Reporte"
+
+#. module: sale_dynamic_combo
 #: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_display_subtotal
 msgid "Combo Total"
 msgstr "Total del Combo"
