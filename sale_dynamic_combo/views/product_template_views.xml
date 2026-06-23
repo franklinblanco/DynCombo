@@ -17,7 +17,10 @@
                         <group string="Live totals (always current)">
                             <field name="dynamic_combo_price"/>
                             <field name="dynamic_combo_cost"/>
-                            <field name="dynamic_combo_bom_id"/>
+                            <!-- Internal phantom BoM that drives the purchase /
+                                 inventory explosion. Kept out of the form: it is
+                                 plumbing, and showing it only confused users. -->
+                            <field name="dynamic_combo_bom_id" invisible="1"/>
                         </group>
                     </group>
                     <field name="dynamic_combo_component_ids"

@@ -25,17 +25,28 @@
              header & hidden component rows. -->
         <xpath expr="//td[@name='td_priceunit']/following-sibling::td[1]" position="replace">
             <td t-if="display_discount" class="text-end">
-                <span t-if="line.discount > 0 and line.combo_report_role != 'parent' and not line.combo_hide_price_in_report"
+                <span t-if="line.discount > 0 and ((line.combo_report_role == 'parent' and line.combo_parent_show_total) or (line.combo_report_role != 'parent' and not line.combo_hide_price_in_report))"
                       t-field="line.discount">-</span>
             </td>
         </xpath>
 
-        <!-- Taxes: blank on a combo header and on hidden components. -->
+        <!-- Taxes: shown on a collapsed combo header (its components are hidden)
+             and on visible component rows; blank on the header when itemizing
+             and on hidden components. -->
         <xpath expr="//td[@name='td_taxes']" position="replace">
             <td name="td_taxes" t-attf-class="text-end {{ 'text-nowrap' if len(taxes) &lt; 10 else '' }}">
-                <span t-if="line.combo_report_role != 'parent' and not line.combo_hide_price_in_report"
+                <span t-if="(line.combo_report_role == 'parent' and line.combo_parent_show_total) or (line.combo_report_role != 'parent' and not line.combo_hide_price_in_report)"
                       t-out="taxes">Tax 15%</span>
             </td>
+        </xpath>
+
+        <!-- Section subtotals: count a collapsed combo by its combo total. The
+             header's own price_subtotal is 0 (the money is on its component
+             lines, which are hidden when collapsed), so without this the combo
+             drops out of its section subtotal. -->
+        <xpath expr="//t[@t-set='current_subtotal' and @t-value='current_subtotal + line.price_subtotal']"
+               position="attributes">
+            <attribute name="t-value">current_subtotal + line.combo_report_subtotal</attribute>
         </xpath>
 
         <!-- Subtotal: combo header shows the combo total (when not itemizing);

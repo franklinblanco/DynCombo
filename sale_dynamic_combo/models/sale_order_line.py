@@ -59,6 +59,13 @@ class SaleOrderLine(models.Model):
     combo_parent_show_total = fields.Boolean(
         compute='_compute_combo_report_fields',
     )
+    # Per-line amount a printed section subtotal should add up. Mirrors what the
+    # line actually shows in its subtotal cell, so a collapsed combo (whose money
+    # sits on hidden component lines) still counts toward its section total.
+    combo_report_subtotal = fields.Monetary(
+        compute='_compute_combo_report_fields',
+        currency_field='currency_id',
+    )
     combo_hide_price_in_report = fields.Boolean(
         compute='_compute_combo_report_fields',
     )
@@ -110,8 +117,11 @@ class SaleOrderLine(models.Model):
         return 'combo_only'
 
     @api.depends(
-        'product_id', 'combo_parent_line_id',
-        'price_subtotal', 'combo_component_line_ids.price_subtotal',
+        'product_id', 'combo_parent_line_id', 'combo_group',
+        'price_subtotal',
+        'order_id.order_line.price_subtotal',
+        'order_id.order_line.combo_group',
+        'order_id.order_line.is_dynamic_combo',
         'order_id.combo_print_full',
         'combo_parent_line_id.order_id.combo_print_full',
     )
@@ -131,8 +141,16 @@ class SaleOrderLine(models.Model):
 
             # amount displayed on a combo header line
             if is_parent and product.dynamic_combo_pricing == 'sum':
+                # Sum the component lines straight off the order, keyed by the
+                # combo group. The combo_component_line_ids One2many can't be
+                # trusted here: during the combo's create/expand its inverse
+                # cache transiently holds each component twice (a pre-flush
+                # NewId and its saved id), which would double the total.
+                components = line.order_id.order_line.filtered(
+                    lambda l, g=line.combo_group: g and l.combo_group == g
+                    and not l.is_dynamic_combo)
                 line.combo_display_subtotal = sum(
-                    line.combo_component_line_ids.mapped('price_subtotal'))
+                    components.mapped('price_subtotal'))
             elif is_parent:
                 line.combo_display_subtotal = line.price_subtotal
             else:
@@ -164,6 +182,17 @@ class SaleOrderLine(models.Model):
                 line.combo_parent_show_total = False
                 line.combo_hide_price_in_report = False
                 line.combo_price_locked = False
+
+            # What this row contributes to a printed section subtotal. A combo
+            # header contributes its combo total only when collapsed (components
+            # hidden); when expanded it contributes 0 and the visible components
+            # carry the money. Everything else contributes its own subtotal.
+            if is_parent:
+                line.combo_report_subtotal = (
+                    line.combo_display_subtotal
+                    if line.combo_parent_show_total else 0.0)
+            else:
+                line.combo_report_subtotal = line.price_subtotal
 
     # --- pricing -------------------------------------------------------------
     def _compute_price_unit(self):
