@@ -12,9 +12,12 @@ class TestComboTotals(TransactionCase):
         super().setUpClass()
         cls.partner = cls.env['res.partner'].create({'name': 'DynCombo Test Customer'})
         P = cls.env['product.product']
-        cls.stand = P.create({'name': 'DC Stand', 'type': 'consu', 'list_price': 45.0})
-        cls.mouse = P.create({'name': 'DC Mouse', 'type': 'consu', 'list_price': 25.0})
-        cls.hub = P.create({'name': 'DC Hub', 'type': 'consu', 'list_price': 60.0})
+        cls.stand = P.create({'name': 'DC Stand', 'type': 'consu',
+                              'list_price': 45.0, 'standard_price': 30.0})
+        cls.mouse = P.create({'name': 'DC Mouse', 'type': 'consu',
+                              'list_price': 25.0, 'standard_price': 15.0})
+        cls.hub = P.create({'name': 'DC Hub', 'type': 'consu',
+                            'list_price': 60.0, 'standard_price': 40.0})
 
         def comps():
             return [
@@ -132,3 +135,20 @@ class TestComboTotals(TransactionCase):
         self.assertAlmostEqual(order.amount_untaxed, 150.0)
         # components stay zero-priced, so their discount can't affect the total
         self.assertEqual(sum(self._components(order).mapped('price_subtotal')), 0.0)
+
+    # Path A — combo margin (rep-facing) ------------------------------------
+    def test_combo_margin_on_header(self):
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id)
+        header = self._header(order)
+        # revenue 130 ; cost 30+15+40 = 85 ; margin 45
+        self.assertAlmostEqual(header.combo_cost_subtotal, 85.0)
+        self.assertAlmostEqual(header.combo_margin, 45.0)
+        self.assertAlmostEqual(header.combo_margin_pct, 34.62, places=2)  # 45/130
+
+    def test_combo_margin_follows_discount(self):
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id)
+        header = self._header(order)
+        header.discount = 10.0           # revenue 117, cost still 85
+        self.assertAlmostEqual(header.combo_margin, 32.0)

@@ -75,6 +75,20 @@ class SaleOrderLine(models.Model):
         compute='_compute_combo_report_fields',
     )
 
+    # --- margin (combo header only; rep-facing, never on the customer PDF) ----
+    combo_cost_subtotal = fields.Monetary(
+        string="Combo Cost", compute='_compute_combo_margin',
+        currency_field='currency_id',
+        help="Live cost of the combo: the components' current cost × quantity "
+             "on this order.")
+    combo_margin = fields.Monetary(
+        string="Combo Margin", compute='_compute_combo_margin',
+        currency_field='currency_id',
+        help="Combo total minus combo cost, for the components on this order.")
+    combo_margin_pct = fields.Float(
+        string="Combo Margin %", compute='_compute_combo_margin',
+        digits='Discount')
+
     # --- grouping (combo_group -> parent line & colour) ----------------------
     @api.depends('combo_group', 'is_dynamic_combo',
                  'order_id.order_line.combo_group',
@@ -193,6 +207,32 @@ class SaleOrderLine(models.Model):
                     if line.combo_parent_show_total else 0.0)
             else:
                 line.combo_report_subtotal = line.price_subtotal
+
+    @api.depends('combo_display_subtotal', 'product_id', 'combo_group',
+                 'order_id.order_line.combo_group',
+                 'order_id.order_line.product_uom_qty',
+                 'order_id.order_line.product_id.standard_price')
+    def _compute_combo_margin(self):
+        """Combo header margin from the *current* components on this order:
+        combo total (revenue) minus Σ(component cost × qty)."""
+        for line in self:
+            is_parent = (bool(line.product_id.is_dynamic_combo)
+                         and not line.combo_parent_line_id)
+            if is_parent and line.combo_group:
+                components = line.order_id.order_line.filtered(
+                    lambda l, g=line.combo_group: g and l.combo_group == g
+                    and not l.is_dynamic_combo)
+                cost = sum(c.product_id.standard_price * c.product_uom_qty
+                           for c in components)
+                revenue = line.combo_display_subtotal
+                line.combo_cost_subtotal = cost
+                line.combo_margin = revenue - cost
+                line.combo_margin_pct = (
+                    (revenue - cost) / revenue * 100.0) if revenue else 0.0
+            else:
+                line.combo_cost_subtotal = 0.0
+                line.combo_margin = 0.0
+                line.combo_margin_pct = 0.0
 
     # --- pricing -------------------------------------------------------------
     def _compute_price_unit(self):

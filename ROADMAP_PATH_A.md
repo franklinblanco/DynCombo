@@ -8,8 +8,9 @@ toward $65–69) is a **separate later milestone**.
 browser tests → **Task 1 combo discount** → Tasks 2–4 → when v18 is *feature
 complete*, port to **17.0 then 16.0** as separate branches in this publishing
 repo (the section-subtotal fix lives in the version-specific sale report
-template, so each port needs its own test pass). **Status: Tasks 0 & 1 DONE** —
-14 tests green, combo discount verified in-browser; Tasks 2–4 next.
+template, so each port needs its own test pass). **Status: Tasks 0–2 DONE** —
+17 tests green; combo discount + combo margin shipped (discount verified
+in-browser); Tasks 3–4 next.
 
 Sequencing rationale: Task 0 protects the price (no money-wrong PDFs); Tasks 1–2
 are quick visible value; Task 3 is cheap parity; Task 4 is the big differentiator
@@ -56,7 +57,15 @@ mirroring the existing qty-propagation), `report/sale_report_combo.xml`,
 `views/sale_order_views.xml`, tests.
 **Effort:** S (~1–2 d). **Risk:** low — reuses qty-propagation pattern.
 
-## Task 2 — Margin per combo
+## Task 2 — Margin per combo  ← DONE (v18.0.5.10.0)
+Shipped: product `dynamic_combo_margin` (Live Combo Margin = price − cost) on the
+Combo/Kit tab; and per-quote `combo_cost_subtotal` / `combo_margin` /
+`combo_margin_pct` on the combo header (hidden-by-default columns, rep-facing,
+never on the PDF; the margin follows the combo discount). Tests in
+test_combo_product.py (`test_live_margin`) and test_combo_totals.py
+(`test_combo_margin_on_header`, `test_combo_margin_follows_discount`). Translated
+EN/ES/IT/PT/FR.
+
 **Why:** "see your margin live" is a strong rep-facing selling point; you already
 compute live cost.
 **Approach:** computed `combo_margin` / `combo_margin_pct` on the header from

@@ -408,3 +408,36 @@ msgstr ""
 #: model:product.template,name:sale_dynamic_combo.product_combo_mouse_product_template
 msgid "Wireless Mouse"
 msgstr "Mouse Inalámbrico"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_cost_subtotal
+msgid "Combo Cost"
+msgstr "Costo del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_margin
+msgid "Combo Margin"
+msgstr "Margen del Combo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_order_line__combo_margin_pct
+msgid "Combo Margin %"
+msgstr "Margen del Combo %"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_order_line__combo_margin
+msgid "Combo total minus combo cost, for the components on this order."
+msgstr "Total del combo menos el costo del combo, para los componentes de este pedido."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_product__dynamic_combo_margin
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_product_template__dynamic_combo_margin
+msgid "Live Combo Margin"
+msgstr "Margen del Combo en Vivo"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_product__dynamic_combo_margin
+#: model:ir.model.fields,help:sale_dynamic_combo.field_product_template__dynamic_combo_margin
+msgid "Live combo price minus live combo cost."
+msgstr "Precio del combo en vivo menos costo del combo en vivo."
+

@@ -66,6 +66,12 @@ class ProductTemplate(models.Model):
              "Follows component cost changes automatically — e.g. when import "
              "freight pushes a component cost up, the kit cost moves with it.",
     )
+    dynamic_combo_margin = fields.Float(
+        string="Live Combo Margin",
+        compute='_compute_dynamic_combo_amounts',
+        digits='Product Price',
+        help="Live combo price minus live combo cost.",
+    )
 
     @api.depends(
         'dynamic_combo_component_ids.quantity',
@@ -81,6 +87,7 @@ class ProductTemplate(models.Model):
                 cost += product.standard_price * comp.quantity
             tmpl.dynamic_combo_price = price
             tmpl.dynamic_combo_cost = cost
+            tmpl.dynamic_combo_margin = price - cost
 
     # --- native phantom BoM sync ---------------------------------------------
     # We lean on Odoo's proven phantom Bill of Materials for the inventory and

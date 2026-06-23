@@ -38,6 +38,12 @@ total and any section subtotal drop together); in *fixed* pricing it discounts
 the combo price directly. The discount also prints on a collapsed combo line.
 Requires the standard *Discounts* setting (Sales ▸ Settings).
 
+**Combo margin (rep-facing).** The product's *Combo / Kit* tab shows a **Live
+Combo Margin** (price − cost), and a quotation carries hidden-by-default **Combo
+Cost / Combo Margin / Combo Margin %** columns so a rep can see the per-quote
+margin (it follows any combo discount). These are internal — never printed on
+the customer PDF.
+
 ### Purchase & inventory (components, not the kit)
 
 Marking a product as a dynamic combo generates and maintains a **phantom Bill of

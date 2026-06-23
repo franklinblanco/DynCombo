@@ -30,6 +30,10 @@
                 <field name="combo_display_subtotal"
                        optional="hide"
                        readonly="1"/>
+                <!-- Rep-facing combo margin (hidden by default; never on the PDF). -->
+                <field name="combo_cost_subtotal" optional="hide" readonly="1"/>
+                <field name="combo_margin" optional="hide" readonly="1"/>
+                <field name="combo_margin_pct" optional="hide" readonly="1"/>
             </xpath>
             <!-- Document-wide: show the full combo (components) on print, or not. -->
             <xpath expr="//field[@name='order_line']" position="before">

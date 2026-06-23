@@ -29,6 +29,9 @@ class TestComboProduct(TransactionCase):
         self.assertAlmostEqual(self.combo.dynamic_combo_price, 240.0)
         self.assertAlmostEqual(self.combo.dynamic_combo_cost, 145.0)
 
+    def test_live_margin(self):
+        self.assertAlmostEqual(self.combo.dynamic_combo_margin, 95.0)  # 240 - 145
+
     def test_live_price_follows_component_price_change(self):
         self.a.list_price = 120.0
         self.combo.invalidate_recordset()
