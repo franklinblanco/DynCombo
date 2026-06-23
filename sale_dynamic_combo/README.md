@@ -14,8 +14,9 @@ todo el detalle"*).
 1. **Mark a product as a combo** — Product form → *Combo / Kit* tab → tick
    *Dynamic Combo / Kit*, choose pricing, and list the default components.
 2. **Quote it** — add the combo to a quotation. It expands into its component
-   lines, which you can edit, swap, or re-quantify for that specific quote.
-3. **Print it** — set *Print Mode* on the combo line.
+   lines, which you can edit, swap, re-quantify, or configure for that quote.
+3. **Print it** — one tick on the order, *Show full combo on print*, switches
+   every combo between collapsed (combo only) and full detail.
 
 ### Pricing (per combo product)
 
@@ -67,27 +68,21 @@ Materials** (kept in lockstep with the component list). Because of that:
   combo header line itself does not procure, so components are never delivered
   twice.
 
-### Print modes (per quotation line)
+### Printing — collapsed or full detail
 
-| Mode | On the PDF |
+A single tick on the order — **Show full combo on print** (`combo_print_full`)
+— switches every combo on the document between two layouts:
+
+| Show full combo on print | On the PDF |
 |------|------------|
-| **Combo only** | one bundled line showing the combo total |
-| **Full detail (no component prices)** | combo total + components with quantities only |
-| **Full detail (with component prices)** | itemized components (sum pricing only) |
+| **off** | each combo is one bundled line showing the combo total |
+| **on** | the combo total plus its itemised components |
 
-### Document-wide print control
-
-For a large quote (e.g. 200 lines, 20 combos) you don't have to set each combo
-line. Two options drive the whole document:
-
-- **Two print actions** in the order's *Print* menu — **combos collapsed** (hide
-  all components) and **full detail** (show all) — resolve it in one click,
-  overriding every line's own mode.
-- A **Combo Detail on Print** field on the order (*per combo* / *collapsed* /
-  *detailed*) for when you'd rather set it on the document and print normally.
-
-These layer on top of the per-line mode (highest priority: the print action,
-then the document field, then each line's own setting).
+Whichever you pick, the **section subtotals, taxes and discounts stay correct**:
+a collapsed combo still counts toward its section subtotal and shows its tax and
+discount on its line, so the printed totals always reconcile with the order
+total. Component prices are itemised in full-detail under **sum** pricing (under
+fixed pricing the components are informational and carry no individual price).
 
 ## Design notes / current limitations
 

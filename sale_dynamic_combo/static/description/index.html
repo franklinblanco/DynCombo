@@ -2,7 +2,7 @@
   <div class="oe_row oe_spaced">
     <div class="oe_span12">
       <h2 class="oe_slogan" style="color:#5C4B8A;">DynCombo &mdash; Dynamic Kits &amp; Combos</h2>
-      <h3 class="oe_slogan" style="margin-top:0;">Bundles that price themselves &mdash; live cost &amp; price, colour-coded on the quote, drag products in/out, and exploded into components on purchase and in stock.</h3>
+      <h3 class="oe_slogan" style="margin-top:0;">Bundles that price themselves &mdash; live price, cost &amp; margin, colour-coded on the quote, configurable per deal, and exploded into components on purchase and in stock.</h3>
     </div>
   </div>
 
@@ -19,10 +19,10 @@
     <div class="oe_span12">
       <p class="oe_mt32" style="font-size:15px;">
         Native Odoo kits freeze: change a component's cost and the kit doesn't
-        follow. <b>DynCombo kits never go stale</b> &mdash; their price and cost are
-        recomputed from the <b>current</b> components every time. On a quotation
-        a combo is a colour-coded group you can build by dragging products in and
-        out; on purchase and in inventory it is recognised as <b>its components,
+        follow. <b>DynCombo kits never go stale</b> &mdash; price, cost and margin
+        are recomputed from the <b>current</b> components every time. On a
+        quotation a combo is a colour-coded group you build and configure per
+        deal; on purchase and in inventory it is recognised as <b>its components,
         not one opaque product</b>.
       </p>
     </div>
@@ -30,26 +30,74 @@
 
   <div class="oe_row oe_spaced">
     <div class="oe_span12">
+      <h3 style="color:#5C4B8A;">Everything DynCombo does</h3>
+      <ul style="font-size:14px;line-height:1.7;">
+        <li><b>Live price &amp; cost</b> &mdash; recomputed from the current components, never frozen.</li>
+        <li><b>Live margin</b> &mdash; price minus cost, on the product and per quotation (rep-facing, never on the customer PDF).</li>
+        <li><b>Two pricing modes</b> &mdash; sum of components, or one fixed combo price.</li>
+        <li><b>Build by dragging</b> products in and out; each combo is colour-coded on the quote.</li>
+        <li><b>Configurable combos</b> &mdash; optional components and pick-one choice groups (e.g. colour or size).</li>
+        <li><b>Quantity guardrails</b> &mdash; min/max allowed per component, enforced per combo.</li>
+        <li><b>Combo-wide discount</b> &mdash; one discount on the combo applies to the whole thing.</li>
+        <li><b>Print collapsed or in detail</b> &mdash; with correct section subtotals, taxes and discounts every time.</li>
+        <li><b>Buys &amp; stocks as components</b> via a generated phantom Bill of Materials.</li>
+        <li><b>5 languages</b> and built on standard sale lines &mdash; taxes, pricelists, delivery and reporting all keep working.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
       <img src="screenshot_product.png" style="width:100%;border:1px solid #e3e3e3;border-radius:8px;box-shadow:0 3px 14px rgba(0,0,0,.10);"/>
-      <p class="oe_mt8" style="text-align:center;color:#777;font-size:13px;">Define a kit on the product &mdash; live price &amp; cost, the auto-generated Kit BoM, and the component breakdown.</p>
+      <p class="oe_mt8" style="text-align:center;color:#777;font-size:13px;">Define a kit on the product &mdash; live price, cost &amp; margin and the component breakdown, with optional / choice-group / min-max settings per component.</p>
     </div>
   </div>
 
   <div class="oe_row oe_spaced">
     <div class="oe_span6">
       <h3 style="color:#5C4B8A;">Live price, cost &amp; margin &mdash; never stale</h3>
-      <p>The combo price and cost are the live sum of the current component
-      values. When a component cost moves &mdash; e.g. shifting import freight &mdash; the
-      kit follows automatically. No re-editing the kit by hand. Reps also see a
-      <b>live combo margin</b> on the product and per quote.</p>
+      <p>Price and cost are the live sum of the current component values, so when
+      a component cost moves &mdash; e.g. shifting import freight &mdash; the kit follows
+      automatically. A <b>live margin</b> (price &minus; cost) shows on the
+      product and on every quote line.</p>
     </div>
+    <div class="oe_span6">
+      <h3 style="color:#5C4B8A;">Two pricing modes</h3>
+      <p><b>Sum of components</b> &mdash; the combo price is the live total of its
+      parts.<br/><b>Fixed combo price</b> &mdash; sell at one price; components stay
+      informational.</p>
+    </div>
+  </div>
+
+  <div class="oe_row oe_spaced">
+    <div class="oe_span6">
+      <h3 style="color:#5C4B8A;">Configurable combos</h3>
+      <p>Mark components <b>optional</b> (the rep includes or excludes them) or
+      group alternatives into a <b>choice group</b> to pick one &mdash; e.g. a
+      colour or size. Adding the combo drops in the required parts, the default
+      optionals and each group's default; a second pick from the same group is
+      blocked.</p>
+    </div>
+    <div class="oe_span6">
+      <h3 style="color:#5C4B8A;">Quantity guardrails</h3>
+      <p>Give any component a <b>min / max quantity</b> per combo. A quote that
+      goes outside the range is blocked with a clear message &mdash; and scaling the
+      whole combo never trips it, because the limit is per single combo.</p>
+    </div>
+  </div>
+
+  <div class="oe_row oe_spaced">
     <div class="oe_span6">
       <h3 style="color:#5C4B8A;">Colour-coded combos, drag to build</h3>
       <p>Each combo on the quotation gets its own colour, so combos are obvious
       at a glance. Drag a product under a combo to add it; drag it out to remove
-      it &mdash; live, no save needed. Set <b>min/max quantities per component</b>
-      to keep reps within allowed ranges, and mark components <b>optional</b> or
-      group them as <b>pick-one choices</b> for configurable combos.</p>
+      it &mdash; live, no save needed.</p>
+    </div>
+    <div class="oe_span6">
+      <h3 style="color:#5C4B8A;">Discount the whole combo</h3>
+      <p>Put one discount on the combo line and it applies to the <b>entire
+      combo</b> &mdash; spread across every component in sum pricing, or on the
+      combo price in fixed pricing. It prints on the collapsed combo line too.</p>
     </div>
   </div>
 
@@ -62,45 +110,31 @@
 
   <div class="oe_row oe_spaced">
     <div class="oe_span6">
-      <h3 style="color:#5C4B8A;">Buys &amp; stocks as components</h3>
-      <p>Backed by a generated phantom Bill of Materials: <b>buying the kit
-      receives its components</b> into stock and values them at their own cost &mdash;
-      not as a single opaque product.</p>
-    </div>
-    <div class="oe_span6">
-      <h3 style="color:#5C4B8A;">Kit total on the line</h3>
-      <p>The kit header shows the kit's total (the sum of its components) while
-      the components stay itemised below &mdash; and the order total is never doubled.</p>
-    </div>
-  </div>
-
-  <div class="oe_row oe_spaced">
-    <div class="oe_span6">
       <h3 style="color:#5C4B8A;">Print your way</h3>
       <p>One tick on the quotation &mdash; <b>Show full combo on print</b> &mdash; prints
       the full breakdown of every combo, or just the combo line. Applies to the
       PDF, email and customer portal.</p>
     </div>
     <div class="oe_span6">
-      <h3 style="color:#5C4B8A;">Two pricing modes</h3>
-      <p><b>Sum of components</b> &mdash; the combo price is the live total of its
-      parts.<br/><b>Fixed combo price</b> &mdash; sell at one price; components stay
-      informational.</p>
+      <h3 style="color:#5C4B8A;">Totals you can trust</h3>
+      <p>The combo total, the printed <b>section subtotals</b> and the order
+      total always reconcile &mdash; collapsed or detailed, with taxes and
+      discounts &mdash; so a customer quote is never quietly wrong.</p>
     </div>
   </div>
 
   <div class="oe_row oe_spaced">
     <div class="oe_span6">
-      <h3 style="color:#5C4B8A;">Discount the whole combo</h3>
-      <p>Put one discount on the combo line and it applies to the <b>entire
-      combo</b> &mdash; spread across every component in sum pricing, or on the
-      combo price in fixed pricing. It prints on the collapsed combo line too.</p>
+      <h3 style="color:#5C4B8A;">Buys &amp; stocks as components</h3>
+      <p>Backed by a generated phantom Bill of Materials: <b>buying the kit
+      receives its components</b> into stock and values them at their own cost &mdash;
+      not as a single opaque product.</p>
     </div>
     <div class="oe_span6">
-      <h3 style="color:#5C4B8A;">Totals you can trust</h3>
-      <p>The combo total, the printed <b>section subtotals</b> and the order
-      total always reconcile &mdash; collapsed or detailed, with taxes and
-      discounts &mdash; so a customer quote is never quietly wrong.</p>
+      <h3 style="color:#5C4B8A;">See your margin per quote</h3>
+      <p>Optional <b>Combo Cost / Margin / Margin&nbsp;%</b> columns put the
+      per-deal margin in front of the rep &mdash; and the margin follows any combo
+      discount. Internal only: never printed on the customer document.</p>
     </div>
   </div>
 

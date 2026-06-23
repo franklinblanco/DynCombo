@@ -1,8 +1,10 @@
 {
     'name': "DynCombo — Dynamic Kits & Combos for Sales",
-    'summary': "DynCombo: build kits/combos that price themselves live, "
-               "drag products in/out, edit per quote, print collapsed or "
-               "detailed, and explode into components on purchase and inventory.",
+    'summary': "DynCombo: kits/combos that price themselves live (price, cost & "
+               "margin), configurable per deal with optional & choice-group "
+               "components, combo-wide discounts, quantity guardrails, collapsed "
+               "or detailed printing, and exploded into components on purchase "
+               "& inventory.",
     'description': """
 DynCombo — Dynamic Kits & Combos
 ================================
@@ -21,8 +23,16 @@ On the purchase and inventory side the combo is backed by a generated phantom
 Bill of Materials, so buying or stocking the kit is recognised as its
 components, not as a single opaque product.
 
-Three print modes per quotation line: combo only, full detail without component
-prices, or full detail with component prices.
+Sell smarter per deal:
+* Live combo margin (price - cost), on the product and on every quote line
+  (rep-facing, never on the customer PDF).
+* One discount on the combo applies to the whole combo.
+* Min/max quantity per component, enforced per combo.
+* Configurable combos: optional components and pick-one choice groups
+  (e.g. colour or size).
+
+Print collapsed (combo only) or in full detail with one tick - section
+subtotals, taxes and discounts always reconcile with the order total.
 
 Fully translated in English, Spanish, Italian, Portuguese and French. Built for
 Odoo 18.0, with 17.0 and 16.0 on the way — the goal is to support every active
@@ -32,7 +42,7 @@ Odoo version.
     'support': "me@franklinblanco.dev",
     'website': "https://apps.odoo.com/apps/modules/18.0/sale_dynamic_combo",
     'category': 'Sales/Sales',
-    'version': '18.0.5.12.0',
+    'version': '18.0.5.12.1',
     'license': 'OPL-1',
     'price': 70.00,
     'currency': 'USD',
