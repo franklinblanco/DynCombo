@@ -441,3 +441,34 @@ msgstr "Margem do combo em tempo real"
 msgid "Live combo price minus live combo cost."
 msgstr "Preço do combo em tempo real menos custo do combo em tempo real."
 
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__min_qty
+msgid "Min Qty"
+msgstr "Qtd mín."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__max_qty
+msgid "Max Qty"
+msgstr "Qtd máx."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__min_qty
+msgid "Minimum quantity of this component allowed per combo on a quotation (0 = no minimum)."
+msgstr "Quantidade mínima deste componente permitida por combo em uma cotação (0 = sem mínimo)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__max_qty
+msgid "Maximum quantity of this component allowed per combo on a quotation (0 = no maximum)."
+msgstr "Quantidade máxima deste componente permitida por combo em uma cotação (0 = sem máximo)."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "\"%(comp)s\" must be at least %(min)g per \"%(combo)s\"."
+msgstr "«%(comp)s» deve ser no mínimo %(min)g por «%(combo)s»."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "\"%(comp)s\" may be at most %(max)g per \"%(combo)s\"."
+msgstr "«%(comp)s» pode ser no máximo %(max)g por «%(combo)s»."
+

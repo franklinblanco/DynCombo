@@ -1,6 +1,7 @@
 import uuid
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SaleOrderLine(models.Model):
@@ -233,6 +234,31 @@ class SaleOrderLine(models.Model):
                 line.combo_cost_subtotal = 0.0
                 line.combo_margin = 0.0
                 line.combo_margin_pct = 0.0
+
+    # --- validation ----------------------------------------------------------
+    @api.constrains('product_uom_qty', 'combo_unit_qty', 'combo_parent_line_id')
+    def _check_combo_component_qty_range(self):
+        """Keep each combo component within the min/max set on the combo product
+        (the range is *per combo*, so scaling the whole combo can't break it)."""
+        for line in self:
+            parent = line.combo_parent_line_id
+            if not parent:
+                continue
+            comp_def = parent.product_id.dynamic_combo_component_ids.filtered(
+                lambda c: c.component_product_id == line.product_id)[:1]
+            if not comp_def:
+                continue
+            per_combo = line.combo_unit_qty
+            if comp_def.min_qty and per_combo < comp_def.min_qty:
+                raise ValidationError(_(
+                    '"%(comp)s" must be at least %(min)g per "%(combo)s".',
+                    comp=line.product_id.display_name, min=comp_def.min_qty,
+                    combo=parent.product_id.display_name))
+            if comp_def.max_qty and per_combo > comp_def.max_qty:
+                raise ValidationError(_(
+                    '"%(comp)s" may be at most %(max)g per "%(combo)s".',
+                    comp=line.product_id.display_name, max=comp_def.max_qty,
+                    combo=parent.product_id.display_name))
 
     # --- pricing -------------------------------------------------------------
     def _compute_price_unit(self):

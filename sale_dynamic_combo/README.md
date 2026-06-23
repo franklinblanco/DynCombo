@@ -44,6 +44,11 @@ Cost / Combo Margin / Combo Margin %** columns so a rep can see the per-quote
 margin (it follows any combo discount). These are internal — never printed on
 the customer PDF.
 
+**Quantity ranges.** Each component can declare a **min/max per combo** on the
+Combo / Kit tab; a quotation that puts a component outside its range is blocked
+with a clear message. Scaling the whole combo never breaks a range — the limits
+are per single combo (0 = no limit).
+
 ### Purchase & inventory (components, not the kit)
 
 Marking a product as a dynamic combo generates and maintains a **phantom Bill of

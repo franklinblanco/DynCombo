@@ -8,9 +8,9 @@ toward $65–69) is a **separate later milestone**.
 browser tests → **Task 1 combo discount** → Tasks 2–4 → when v18 is *feature
 complete*, port to **17.0 then 16.0** as separate branches in this publishing
 repo (the section-subtotal fix lives in the version-specific sale report
-template, so each port needs its own test pass). **Status: Tasks 0–2 DONE** —
-17 tests green; combo discount + combo margin shipped (discount verified
-in-browser); Tasks 3–4 next.
+template, so each port needs its own test pass). **Status: Tasks 0–3 DONE** —
+20 tests green; combo discount + combo margin + per-component min/max qty shipped
+(discount + margin verified in-browser); Task 4 (configurable combos) next.
 
 Sequencing rationale: Task 0 protects the price (no money-wrong PDFs); Tasks 1–2
 are quick visible value; Task 3 is cheap parity; Task 4 is the big differentiator
@@ -74,7 +74,14 @@ line; optional line in the PDF behind a setting.
 **Files:** `models/sale_order_line.py`, `views/sale_order_views.xml`, tests.
 **Effort:** S (~1 d). **Risk:** low (read-only, display).
 
-## Task 3 — Per-component min/max quantity
+## Task 3 — Per-component min/max quantity  ← DONE (v18.0.5.11.0)
+Shipped: `min_qty` / `max_qty` on `sale.combo.component` (Combo/Kit tab,
+hidden-by-default columns) and an `@api.constrains` on the order line enforcing
+each component's quantity *per combo* (`combo_unit_qty`), so scaling the whole
+combo never trips a range. Tests: `test_component_qty_over_max_is_blocked`,
+`test_component_qty_within_range_ok`, `test_component_range_unaffected_by_combo_qty_scaling`.
+Translated EN/ES/IT/PT/FR (incl. the two ValidationError messages).
+
 **Why:** cheap parity with BrowseInfo's "allowed quantity ranges".
 **Approach:** `min_qty` / `max_qty` on `sale.combo.component`; validate the SO
 component line qty (block or warn + clamp) in `write`/constraint.

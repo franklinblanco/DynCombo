@@ -30,6 +30,8 @@
                             <field name="sequence" widget="handle"/>
                             <field name="component_product_id"/>
                             <field name="quantity"/>
+                            <field name="min_qty" optional="hide"/>
+                            <field name="max_qty" optional="hide"/>
                             <field name="component_price" readonly="1"/>
                             <field name="component_cost" readonly="1"/>
                             <field name="component_price_subtotal" readonly="1"

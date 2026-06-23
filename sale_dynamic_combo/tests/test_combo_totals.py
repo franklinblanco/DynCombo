@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, tagged
 
 
@@ -152,3 +153,36 @@ class TestComboTotals(TransactionCase):
         header = self._header(order)
         header.discount = 10.0           # revenue 117, cost still 85
         self.assertAlmostEqual(header.combo_margin, 32.0)
+
+    # Path A — per-component min/max quantity -------------------------------
+    def _stand_line(self, order):
+        return order.order_line.filtered(
+            lambda l: l.combo_report_role == 'component'
+            and l.product_id == self.stand)
+
+    def test_component_qty_over_max_is_blocked(self):
+        self.sum_combo.dynamic_combo_component_ids.filtered(
+            lambda c: c.component_product_id == self.stand).max_qty = 2.0
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id)
+        with self.assertRaises(ValidationError):
+            self._stand_line(order).product_uom_qty = 3.0  # 3 per combo > max 2
+
+    def test_component_qty_within_range_ok(self):
+        self.sum_combo.dynamic_combo_component_ids.filtered(
+            lambda c: c.component_product_id == self.stand).max_qty = 2.0
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id)
+        line = self._stand_line(order)
+        line.product_uom_qty = 2.0
+        self.assertEqual(line.combo_unit_qty, 2.0)
+
+    def test_component_range_unaffected_by_combo_qty_scaling(self):
+        # max 2 per combo; scaling the whole combo to qty 5 keeps per-combo at 1
+        self.sum_combo.dynamic_combo_component_ids.filtered(
+            lambda c: c.component_product_id == self.stand).max_qty = 2.0
+        order = self._order()
+        self._add(order, self.sum_combo.product_variant_id, qty=5.0)
+        line = self._stand_line(order)
+        self.assertEqual(line.product_uom_qty, 5.0)   # absolute scaled
+        self.assertEqual(line.combo_unit_qty, 1.0)    # per-combo unchanged → valid

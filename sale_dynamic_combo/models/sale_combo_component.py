@@ -25,6 +25,16 @@ class SaleComboComponent(models.Model):
         string="Quantity", default=1.0, required=True,
         digits='Product Unit of Measure',
     )
+    # Allowed range for this component's quantity *per combo* on a quotation
+    # (0 = no limit). Enforced on the sale order line.
+    min_qty = fields.Float(
+        string="Min Qty", default=0.0, digits='Product Unit of Measure',
+        help="Minimum quantity of this component allowed per combo on a "
+             "quotation (0 = no minimum).")
+    max_qty = fields.Float(
+        string="Max Qty", default=0.0, digits='Product Unit of Measure',
+        help="Maximum quantity of this component allowed per combo on a "
+             "quotation (0 = no maximum).")
     # Read-only mirrors of the component product's current sale price and cost,
     # shown on the Combo / Kit tab so the user can see the breakdown. They track
     # the product, so they update when the component's price/cost changes.
