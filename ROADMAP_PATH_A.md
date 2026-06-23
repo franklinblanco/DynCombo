@@ -44,8 +44,10 @@ pricing (combo total + section subtotals drop together) and discounts the combo
 price in fixed pricing; it also prints on a collapsed combo line. Reuses the
 standard line `discount` field (needs the Sales *Discounts* setting). Tests:
 `test_combo_discount_sum_spreads_to_components`, `test_combo_discount_fixed_on_header`.
-Follow-ups: live JS recompute on the header (today it applies on save), and new
-dragged-in components inheriting the combo discount.
+Live update: `combo_discount_field.js` applies the header discount to the
+components on the fly as you type (mirrors `combo_qty_field.js`); the write()
+stays the save/API backstop. Follow-up: newly dragged-in components inheriting
+the combo discount.
 
 **Why:** real quoting need; no dynamic-combo competitor does it cleanly.
 **Approach:** add `combo_discount` (%) on the combo header line. In **sum**

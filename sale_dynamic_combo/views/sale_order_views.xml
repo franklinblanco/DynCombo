@@ -55,6 +55,11 @@
                    position="attributes">
                 <attribute name="widget">combo_qty</attribute>
             </xpath>
+            <!-- Apply a kit header's discount to its components live (sum pricing). -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='discount']"
+                   position="attributes">
+                <attribute name="widget">combo_discount</attribute>
+            </xpath>
             <!-- Lock the unit price on lines whose price we force to zero
                  (combo header in sum pricing, components in fixed pricing). -->
             <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']"
