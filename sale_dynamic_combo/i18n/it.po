@@ -471,3 +471,39 @@ msgstr "«%(comp)s» deve essere almeno %(min)g per «%(combo)s»."
 msgid "\"%(comp)s\" may be at most %(max)g per \"%(combo)s\"."
 msgstr "«%(comp)s» può essere al massimo %(max)g per «%(combo)s»."
 
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "Optional"
+msgstr "Opzionale"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Choice Group"
+msgstr "Gruppo di scelta"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Default"
+msgstr "Predefinito"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "The salesperson can include or exclude this component on a quotation."
+msgstr "Il venditore può includere o escludere questo componente in un preventivo."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Components that share a choice group are alternatives — at most one is kept on a quotation (e.g. a colour or size choice)."
+msgstr "I componenti che condividono un gruppo di scelta sono alternative: al massimo uno viene mantenuto in un preventivo (es. una scelta di colore o taglia)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Whether this component — when optional, or one of a choice group — is added when the combo is first put on a quotation."
+msgstr "Se questo componente —quando è opzionale, o uno di un gruppo di scelta— viene aggiunto quando il combo viene messo per la prima volta in un preventivo."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "Choose only one option from the \"%(group)s\" choice in \"%(combo)s\"."
+msgstr "Scegli una sola opzione dal gruppo «%(group)s» in «%(combo)s»."
+

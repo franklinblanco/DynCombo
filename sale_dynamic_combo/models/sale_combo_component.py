@@ -35,6 +35,19 @@ class SaleComboComponent(models.Model):
         string="Max Qty", default=0.0, digits='Product Unit of Measure',
         help="Maximum quantity of this component allowed per combo on a "
              "quotation (0 = no maximum).")
+    # --- configurable combos ---
+    is_optional = fields.Boolean(
+        string="Optional", default=False,
+        help="The salesperson can include or exclude this component on a "
+             "quotation.")
+    choice_group = fields.Char(
+        string="Choice Group",
+        help="Components that share a choice group are alternatives — at most "
+             "one is kept on a quotation (e.g. a colour or size choice).")
+    default_included = fields.Boolean(
+        string="Default", default=True,
+        help="Whether this component — when optional, or one of a choice group "
+             "— is added when the combo is first put on a quotation.")
     # Read-only mirrors of the component product's current sale price and cost,
     # shown on the Combo / Kit tab so the user can see the breakdown. They track
     # the product, so they update when the component's price/cost changes.

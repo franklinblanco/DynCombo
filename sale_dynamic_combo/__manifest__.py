@@ -32,7 +32,7 @@ Odoo version.
     'support': "me@franklinblanco.dev",
     'website': "https://apps.odoo.com/apps/modules/18.0/sale_dynamic_combo",
     'category': 'Sales/Sales',
-    'version': '18.0.5.11.0',
+    'version': '18.0.5.12.0',
     'license': 'OPL-1',
     'price': 70.00,
     'currency': 'USD',

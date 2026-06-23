@@ -260,6 +260,31 @@ class SaleOrderLine(models.Model):
                     comp=line.product_id.display_name, max=comp_def.max_qty,
                     combo=parent.product_id.display_name))
 
+    @api.constrains('combo_parent_line_id', 'combo_group', 'product_id')
+    def _check_combo_choice_group(self):
+        """At most one component from each choice group on a combo."""
+        for header in self.combo_parent_line_id:
+            group_of = {
+                d.component_product_id.id: d.choice_group
+                for d in header.product_id.dynamic_combo_component_ids
+                if d.choice_group}
+            if not group_of:
+                continue
+            comps = header.order_id.order_line.filtered(
+                lambda l, g=header.combo_group: l.combo_group == g
+                and not l.is_dynamic_combo)
+            counts = {}
+            for line in comps:
+                grp = group_of.get(line.product_id.id)
+                if grp:
+                    counts[grp] = counts.get(grp, 0) + 1
+            for grp, n in counts.items():
+                if n > 1:
+                    raise ValidationError(_(
+                        'Choose only one option from the "%(group)s" choice in '
+                        '"%(combo)s".',
+                        group=grp, combo=header.product_id.display_name))
+
     # --- pricing -------------------------------------------------------------
     def _compute_price_unit(self):
         super()._compute_price_unit()
@@ -357,11 +382,31 @@ class SaleOrderLine(models.Model):
                             ).write({'discount': line.discount})
         return res
 
+    def _combo_components_to_expand(self, components):
+        """Which defined components to put on the quote when the combo is added:
+        every required one, each default-included optional, and the default pick
+        of each choice group (configurable combos). The rest the rep adds/swaps
+        by dragging."""
+        chosen = self.env['sale.combo.component']
+        groups_done = set()
+        for comp in components:  # sequence order
+            if comp.choice_group:
+                if comp.choice_group not in groups_done and comp.default_included:
+                    chosen |= comp
+                    groups_done.add(comp.choice_group)
+            elif comp.is_optional:
+                if comp.default_included:
+                    chosen |= comp
+            else:
+                chosen |= comp
+        return chosen
+
     def _expand_combo_components(self):
         """Create editable component lines from the combo's default components,
         tagged with the combo's group so they belong to it."""
         self.ensure_one()
-        components = self.product_id.dynamic_combo_component_ids
+        components = self._combo_components_to_expand(
+            self.product_id.dynamic_combo_component_ids)
         if not components:
             return
         vals_list = [{

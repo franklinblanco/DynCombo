@@ -49,6 +49,12 @@ Combo / Kit tab; a quotation that puts a component outside its range is blocked
 with a clear message. Scaling the whole combo never breaks a range — the limits
 are per single combo (0 = no limit).
 
+**Configurable combos.** Mark a component **Optional** (the rep includes or
+excludes it) or put alternatives in a **Choice Group** to pick one — e.g. a
+colour or size. When the combo is added, the required parts, the default-on
+optionals and each group's default option are placed; the rep adjusts by
+dragging. A second option from the same choice group is blocked.
+
 ### Purchase & inventory (components, not the kit)
 
 Marking a product as a dynamic combo generates and maintains a **phantom Bill of

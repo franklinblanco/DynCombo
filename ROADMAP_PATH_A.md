@@ -8,9 +8,11 @@ toward $65–69) is a **separate later milestone**.
 browser tests → **Task 1 combo discount** → Tasks 2–4 → when v18 is *feature
 complete*, port to **17.0 then 16.0** as separate branches in this publishing
 repo (the section-subtotal fix lives in the version-specific sale report
-template, so each port needs its own test pass). **Status: Tasks 0–3 DONE** —
-20 tests green; combo discount + combo margin + per-component min/max qty shipped
-(discount + margin verified in-browser); Task 4 (configurable combos) next.
+template, so each port needs its own test pass). **Status: Tasks 0–4 DONE —
+v18 is FEATURE COMPLETE** — 22 tests green; combo discount, combo margin,
+per-component min/max qty, and configurable/optional combos all shipped (discount
++ margin verified in-browser). **Next milestone: 16.0/17.0 ports** (separate
+branches in this publishing repo).
 
 Sequencing rationale: Task 0 protects the price (no money-wrong PDFs); Tasks 1–2
 are quick visible value; Task 3 is cheap parity; Task 4 is the big differentiator
@@ -89,7 +91,15 @@ component line qty (block or warn + clamp) in `write`/constraint.
 `views/product_template_views.xml`, tests.
 **Effort:** S–M (~2 d). **Risk:** low.
 
-## Task 4 — Configurable / optional combos  ← the differentiator
+## Task 4 — Configurable / optional combos  ← DONE (v18.0.5.12.0) — inline approach
+Shipped (inline, reuses drag — no wizard): `is_optional`, `choice_group` and
+`default_included` on `sale.combo.component`. On adding the combo,
+`_combo_components_to_expand` places required parts + default-on optionals + each
+choice group's default; an `@api.constrains` blocks a second option from the same
+choice group. Tests in test_combo_configurable.py. Translated EN/ES/IT/PT/FR.
+Follow-up (deferred): a guided configurator wizard popup.
+
+(original design notes below)
 **Why:** moves DynCombo into CPQ territory; this is what actually carries $59.
 **Approach:** on `sale.combo.component` add `is_optional` and `choice_group`
 (pick-one-of-a-group). When the combo is added to a quote, run a lightweight

@@ -472,3 +472,39 @@ msgstr "«%(comp)s» deve ser no mínimo %(min)g por «%(combo)s»."
 msgid "\"%(comp)s\" may be at most %(max)g per \"%(combo)s\"."
 msgstr "«%(comp)s» pode ser no máximo %(max)g por «%(combo)s»."
 
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "Optional"
+msgstr "Opcional"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Choice Group"
+msgstr "Grupo de opções"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Default"
+msgstr "Padrão"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "The salesperson can include or exclude this component on a quotation."
+msgstr "O vendedor pode incluir ou excluir este componente em uma cotação."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Components that share a choice group are alternatives — at most one is kept on a quotation (e.g. a colour or size choice)."
+msgstr "Componentes que compartilham um grupo de opções são alternativas: no máximo um é mantido em uma cotação (ex. uma escolha de cor ou tamanho)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Whether this component — when optional, or one of a choice group — is added when the combo is first put on a quotation."
+msgstr "Se este componente —quando opcional, ou um de um grupo de opções— é adicionado ao colocar o combo pela primeira vez em uma cotação."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "Choose only one option from the \"%(group)s\" choice in \"%(combo)s\"."
+msgstr "Escolha apenas uma opção do grupo «%(group)s» em «%(combo)s»."
+

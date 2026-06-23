@@ -471,3 +471,39 @@ msgstr "« %(comp)s » doit être au moins %(min)g par « %(combo)s »."
 msgid "\"%(comp)s\" may be at most %(max)g per \"%(combo)s\"."
 msgstr "« %(comp)s » peut être au plus %(max)g par « %(combo)s »."
 
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "Optional"
+msgstr "Facultatif"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Choice Group"
+msgstr "Groupe de choix"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Default"
+msgstr "Par défaut"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "The salesperson can include or exclude this component on a quotation."
+msgstr "Le vendeur peut inclure ou exclure ce composant sur un devis."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Components that share a choice group are alternatives — at most one is kept on a quotation (e.g. a colour or size choice)."
+msgstr "Les composants qui partagent un groupe de choix sont des alternatives : au plus un est conservé sur un devis (p. ex. un choix de couleur ou de taille)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Whether this component — when optional, or one of a choice group — is added when the combo is first put on a quotation."
+msgstr "Si ce composant — lorsqu'il est facultatif, ou l'un d'un groupe de choix — est ajouté lorsque le combo est placé pour la première fois sur un devis."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "Choose only one option from the \"%(group)s\" choice in \"%(combo)s\"."
+msgstr "Choisissez une seule option du groupe « %(group)s » dans « %(combo)s »."
+

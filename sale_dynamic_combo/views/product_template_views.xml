@@ -32,6 +32,9 @@
                             <field name="quantity"/>
                             <field name="min_qty" optional="hide"/>
                             <field name="max_qty" optional="hide"/>
+                            <field name="is_optional" optional="hide"/>
+                            <field name="choice_group" optional="hide"/>
+                            <field name="default_included" optional="hide"/>
                             <field name="component_price" readonly="1"/>
                             <field name="component_cost" readonly="1"/>
                             <field name="component_price_subtotal" readonly="1"

@@ -472,3 +472,39 @@ msgstr "«%(comp)s» debe ser como mínimo %(min)g por «%(combo)s»."
 msgid "\"%(comp)s\" may be at most %(max)g per \"%(combo)s\"."
 msgstr "«%(comp)s» puede ser como máximo %(max)g por «%(combo)s»."
 
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "Optional"
+msgstr "Opcional"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Choice Group"
+msgstr "Grupo de Opciones"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,field_description:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Default"
+msgstr "Por defecto"
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__is_optional
+msgid "The salesperson can include or exclude this component on a quotation."
+msgstr "El vendedor puede incluir o excluir este componente en una cotización."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__choice_group
+msgid "Components that share a choice group are alternatives — at most one is kept on a quotation (e.g. a colour or size choice)."
+msgstr "Los componentes que comparten un grupo de opciones son alternativas: se mantiene como máximo uno en una cotización (p. ej. una elección de color o tamaño)."
+
+#. module: sale_dynamic_combo
+#: model:ir.model.fields,help:sale_dynamic_combo.field_sale_combo_component__default_included
+msgid "Whether this component — when optional, or one of a choice group — is added when the combo is first put on a quotation."
+msgstr "Si este componente —cuando es opcional, o uno de un grupo de opciones— se agrega al poner el combo por primera vez en una cotización."
+
+#. module: sale_dynamic_combo
+#: code:addons/sale_dynamic_combo/models/sale_order_line.py:0
+msgid "Choose only one option from the \"%(group)s\" choice in \"%(combo)s\"."
+msgstr "Elija solo una opción del grupo «%(group)s» en «%(combo)s»."
+
