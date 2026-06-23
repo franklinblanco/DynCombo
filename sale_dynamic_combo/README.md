@@ -94,7 +94,8 @@ then the document field, then each line's own setting).
 ## Licensing
 
 DynCombo is a **commercial, paid product**: a proprietary module sold via the
-Odoo Apps store (and/or directly), priced at **89.00 USD** in the manifest.
+Odoo Apps store (and/or directly). Introductory launch price **10.00 USD** in
+the manifest (planned to rise to $15 after launch).
 Built clean (no OCA code) and marked **OPL-1** so it can be sold. Target the
 customer's exact Odoo version before distributing — prototyped on 18.0.
 

@@ -32,7 +32,7 @@ Available in English and Spanish.
     'category': 'Sales/Sales',
     'version': '18.0.5.5.0',
     'license': 'OPL-1',
-    'price': 89.00,
+    'price': 10.00,
     'currency': 'USD',
     'depends': ['sale_management', 'mrp', 'sale_mrp', 'purchase_mrp'],
     'data': [
