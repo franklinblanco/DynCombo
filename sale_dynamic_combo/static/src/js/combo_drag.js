@@ -75,12 +75,73 @@ patch(ListRenderer.prototype, {
         } else {
             // A normal line joins the combo of the line above it (or leaves).
             const newGroup = (prev && prev.data.combo_group) || false;
-            if ((dragged.data.combo_group || false) !== newGroup) {
-                await dragged.update({ combo_group: newGroup });
+            const oldGroup = dragged.data.combo_group || false;
+            if (oldGroup !== newGroup) {
+                if (newGroup) {
+                    // Joining a combo: rescale this line's quantity by the kit's
+                    // quantity and apply the kit's discount, live — so it shows
+                    // without a save (the qty / discount widgets only react to
+                    // the header's own edits, not to a new member arriving).
+                    const header = list.records.find(
+                        (r) =>
+                            r.data.is_dynamic_combo &&
+                            r.data.combo_group === newGroup
+                    );
+                    const headerQty =
+                        (header && header.data.product_uom_qty) || 1;
+                    // Treat the line's current qty as "per combo" (or keep its
+                    // existing per-combo qty when moving between combos).
+                    const unit =
+                        (oldGroup && dragged.data.combo_unit_qty) ||
+                        dragged.data.product_uom_qty ||
+                        1;
+                    const updates = {
+                        combo_group: newGroup,
+                        combo_unit_qty: unit,
+                        product_uom_qty: unit * headerQty,
+                    };
+                    if (header && header.data.dynamic_combo_pricing === "sum") {
+                        updates.discount = header.data.discount || 0;
+                    }
+                    await dragged.update(updates);
+                } else {
+                    // Leaving every combo: back to a standalone line.
+                    await dragged.update({ combo_group: false, combo_unit_qty: 1 });
+                }
             }
         }
 
+        // Refresh colours client-side so a drag in/out recolours immediately.
+        await this._recolorCombos(list);
         await this._normalizeCombos(list);
+    },
+
+    /**
+     * Recompute each line's combo colour index client-side, mirroring the
+     * server _compute_combo_color, so dragging a line in or out of a combo
+     * recolours the rows live (the stored field would only refresh on save).
+     */
+    async _recolorCombos(list) {
+        const headers = list.records
+            .filter((r) => r.data.is_dynamic_combo)
+            .sort((a, b) =>
+                (a.data.combo_group || "").localeCompare(b.data.combo_group || "")
+            );
+        const groups = [];
+        for (const h of headers) {
+            const g = h.data.combo_group;
+            if (g && !groups.includes(g)) {
+                groups.push(g);
+            }
+        }
+        for (const r of list.records) {
+            const g = r.data.combo_group;
+            const color =
+                g && groups.includes(g) ? (groups.indexOf(g) % 11) + 1 : 0;
+            if (r.data.combo_color !== color) {
+                await r.update({ combo_color: color });
+            }
+        }
     },
 
     /** Prompt when deleting a kit header: delete it with or without its components. */

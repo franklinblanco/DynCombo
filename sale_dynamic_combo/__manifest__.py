@@ -42,7 +42,7 @@ Odoo version.
     'support': "me@franklinblanco.dev",
     'website': "https://apps.odoo.com/apps/modules/18.0/sale_dynamic_combo",
     'category': 'Sales/Sales',
-    'version': '18.0.5.12.4',
+    'version': '18.0.5.13.0',
     'license': 'OPL-1',
     'price': 79.00,
     'currency': 'USD',
@@ -60,6 +60,7 @@ Odoo version.
         'web.assets_backend': [
             'sale_dynamic_combo/static/src/js/combo_product_field.js',
             'sale_dynamic_combo/static/src/js/combo_drag.js',
+            'sale_dynamic_combo/static/src/js/combo_indent_field.js',
             'sale_dynamic_combo/static/src/js/combo_amount_field.js',
             'sale_dynamic_combo/static/src/js/combo_qty_field.js',
             'sale_dynamic_combo/static/src/js/combo_discount_field.js',

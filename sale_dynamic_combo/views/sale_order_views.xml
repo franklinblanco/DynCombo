@@ -17,8 +17,14 @@
                 <attribute name="decoration-primary">combo_color in [5, 11]</attribute>
                 <attribute name="decoration-muted">combo_color == 6</attribute>
             </xpath>
+            <!-- Leading indent column: a "↳" branch icon on combo components and
+                 a "▾" marker on combo headers, so the nesting is visible per
+                 line. (combo_report_role is still loaded here for the amount
+                 widget; the indent widget reads the live combo_group instead.) -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_template_id']" position="before">
+                <field name="combo_report_role" widget="combo_indent" string=" "/>
+            </xpath>
             <xpath expr="//field[@name='order_line']/list" position="inside">
-                <field name="combo_report_role" column_invisible="1"/>
                 <field name="combo_price_locked" column_invisible="1"/>
                 <field name="combo_color" column_invisible="1"/>
                 <!-- The invisible grouping key the drag widget sets/clears, plus
